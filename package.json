@@ -1,0 +1,36 @@
+{
+  "name": "guvenli-bordo-yonetim",
+  "version": "1.0.0",
+  "description": "Güvenli Bordo Yönetim Windows uygulaması",
+  "main": "main.js",
+  "author": "Güvenli Hipermarket",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^38.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.guvenlihipermarket.bordoyonetim",
+    "productName": "Güvenli Bordo Yönetim",
+    "artifactName": "Guvenli-Bordo-Yonetim-Kurulum-${version}.${ext}",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Güvenli Bordo Yönetim"
+    }
+  }
+}
