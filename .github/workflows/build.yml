@@ -1,0 +1,34 @@
+name: Windows uygulamasini derle
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Kodu indir
+        uses: actions/checkout@v4
+
+      - name: Node.js kurulumu
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Bagimliliklari kur
+        run: npm install
+
+      - name: Windows EXE olustur
+        run: npm run build
+
+      - name: Kurulum dosyasini yukle
+        uses: actions/upload-artifact@v4
+        with:
+          name: Guvenli-Bordo-Yonetim-Windows
+          path: dist/*.exe
+          if-no-files-found: error
